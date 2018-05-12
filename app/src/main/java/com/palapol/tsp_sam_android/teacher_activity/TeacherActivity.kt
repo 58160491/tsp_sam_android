@@ -1,4 +1,4 @@
-package com.palapol.tsp_sam_android.Teacher
+package com.palapol.tsp_sam_android.teacher_activity
 
 import android.os.Bundle
 import android.support.design.widget.Snackbar

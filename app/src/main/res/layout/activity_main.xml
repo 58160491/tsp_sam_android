@@ -8,23 +8,31 @@
 
     <RelativeLayout
         android:layout_height="match_parent"
-        android:layout_width="match_parent">
+        android:layout_width="match_parent"
+        android:gravity="center">
         <TextView
+            android:id="@+id/text_user_hint"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hello World!"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-        <TextView
+            android:text="Username (1 == Student || 2 == Teacher), NO passwd needed"/>
+        <EditText
+            android:id="@+id/username"
+            android:layout_below="@id/text_user_hint"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hello World!"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:hint="@string/username"/>
+        <EditText
+            android:id="@+id/password"
+            android:layout_below="@id/username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/password"/>
+        <Button
+            android:id="@+id/login_btn"
+            android:layout_below="@id/password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/login_btn"/>
     </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>
