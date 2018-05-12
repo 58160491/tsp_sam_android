@@ -3,6 +3,9 @@ package com.palapol.tsp_sam_android.student_activity
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.design.widget.NavigationView
+import android.support.v4.app.Fragment
+import android.support.v4.app.FragmentManager
+import android.support.v4.app.FragmentTransaction
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
@@ -12,7 +15,27 @@ import com.palapol.tsp_sam_android.R
 import kotlinx.android.synthetic.main.activity_student.*
 import kotlinx.android.synthetic.main.app_bar_student.*
 
+inline fun FragmentManager.inTransaction(func: FragmentTransaction.() -> Unit) {
+    val fragmentTransaction = beginTransaction()
+    fragmentTransaction.func()
+    fragmentTransaction.commit()
+}
+
 class StudentActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+
+    fun AppCompatActivity.addFragment(fragment: Fragment, frameId: Int, backStackTag: String? = null) {
+        supportFragmentManager.inTransaction {
+            add(frameId, fragment)
+            backStackTag?.let { addToBackStack(fragment.javaClass.name) }
+        }
+    }
+
+    fun AppCompatActivity.replaceFragment(fragment: Fragment, frameId: Int, backStackTag: String? = null) {
+        supportFragmentManager.inTransaction {
+            replace(frameId, fragment)
+            backStackTag?.let { addToBackStack(fragment.javaClass.name) }
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
